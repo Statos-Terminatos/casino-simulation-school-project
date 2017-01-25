@@ -11,3 +11,10 @@ table1 = Roulette.Roulette(100)
 
 print(table1.SimulateGame(bets, amounts))
 print(table1.SimulateGame(bets, amounts))
+
+import Craps
+
+#vals = [Craps.Craps.Dices for _ in range(1000)]
+
+print(Craps.Craps.Dices())
+
