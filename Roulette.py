@@ -1,7 +1,5 @@
 import random
 
-# This is used to fixed the random generator so we can test the output 
-random.seed(3456)
 
 class Roulette(object):
     # Initialization method
@@ -17,36 +15,62 @@ class Roulette(object):
         for betted_amount in betted_amounts:
 
             if type(betted_amount) not in [int, float]:
-                print("Please enter a real bet, in numbers")
+                raise TypeError("Please enter a real bet, in numbers")
 
-            if self.minimum_bet > betted_amount:
-                print("Bet is lower than minimum bet")
-                resultBet.append(False)
+            if betted_amount >= self.minimum_bet:
+                resultBet.append(1)
             else:
-                print("Bet is allowed")
-                resultBet.append(True)
+                resultBet.append(0)
 
         return resultBet
 
     def SpinTheWheel(self, bets):
-        result_bets = []
+        print("Spinning the wheel...")
+        result_guess = []
 
         # Check the bets are between 0 and 36
         for bet in bets:
             if bet < 0 or bet > 36:
-                print("Please give a bet between 0 and 36")
-                return False
+                raise ValueError("Please give a bet between 0 and 36")
 
         lucky_number = random.randrange(0, 36)
         print("Ball lands on {}".format(lucky_number))
 
-        # Check for winners
-        for i, v in enumerate(bets):
+        # number of winners
+        number_correct_bets = 0
 
-            if v == lucky_number:
-                result_bets.append(1)
+        for bet in bets:
+            if bet == lucky_number:
+                result_guess.append(1)
+                number_correct_bets = number_correct_bets + 1
             else:
-                result_bets.append(0)
+                result_guess.append(0)
 
-        return lucky_number, result_bets
+        if number_correct_bets > 0:
+            print("There are {} correct bet(s)".format(number_correct_bets))
+        else:
+            print("No winners this round")
+        return lucky_number, result_guess
 
+    def SimulateGame(self, bets, betted_amounts):
+        can_play = self.AboveMinimum(betted_amounts)
+        lucky_number, result_bets = self.SpinTheWheel(bets)
+
+        winners = []
+        # Zip is used for looping through 2 lists
+        for w_l, guess in zip(can_play, result_bets):
+            winners.append(w_l * guess)
+
+        cash = []
+        casino = 0
+
+        for winner, betted_amount in zip(winners, betted_amounts):
+            if winner:
+                # winners cash money
+                cash.append(betted_amount * 30)
+            else:
+                # Casino cash the money lost players betted
+                cash.append(0)
+                casino = casino + betted_amount
+
+        return [casino, cash]

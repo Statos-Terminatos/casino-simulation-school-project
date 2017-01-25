@@ -1,8 +1,13 @@
 import Roulette
-rg = Roulette.Roulette(5)
+import random
 
-print(rg.AboveMinimum([1, 20, 6, 3, 2]))
-print(rg.SpinTheWheel([1, 2, 24]))
+# This is used to fixe the pseudo random generator so we can test the output
+random.seed(3456)
 
-lucky, result_bets = rg.SpinTheWheel([1, 2, 23])
-print (lucky, result_bets)
+amounts = [10, 85, 120, 65, 150, 122]
+bets = [10, 24, 36, 0, 11, 24]
+
+table1 = Roulette.Roulette(100)
+
+print(table1.SimulateGame(bets, amounts))
+print(table1.SimulateGame(bets, amounts))
