@@ -1,25 +1,33 @@
+import Roulette
 import Craps
-from collections import Counter
-import numpy as np
-from matplotlib import pyplot as plt
-
-labels, values = zip(*Counter(Craps.Craps.Dices(1000)).items())
-indexes = np.arange(len(labels))
-width = 1
-plt.bar(indexes, values, width)
-plt.xticks(indexes + width +0.5, labels)
-plt.show()
-
-
-import Roulette2
 import random
 
+from Employee import Barman, Croupier
 # This is used to fixe the pseudo random generator so we can test the output
 
 
-amounts = [10, 85, 120, 65, 150, 122]
+# res = []
+# total1 = 0
+# total2 = 0
+# for i in range(10000):
+#     craps = Craps.Craps(0.9, 1)
+#     table = Roulette.Roulette(1)
+#     amounts1 = [random.randrange(50, 200) for x in range(10)]
+#     amounts2 = [random.randrange(40, 300) for x in range(10)]
+#     res1 = craps.SimulateGame(amounts1)
+#     res2 = table.SimulateGame(amounts2)
+#     print("--------------------------\n")
+#     total1 = total1 + sum(res1[1])/sum(amounts1)
+#     total2 = total2 + sum(res2[1])/sum(amounts2)
+#     print( "total: {}%".format(total1) )
+#     print( "total: {}%".format(total2) )
+#     print("--------------------------\n")
 
-table1 = Roulette2.Roulette()
+# print(total1/10000*100)
+# print(total2/10000*100)
 
-print(table1.SimulateGame(amounts))
+b = Barman("aliya", 300)
+print(b)
+
+
 
