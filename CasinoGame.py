@@ -1,7 +1,7 @@
 import random
 
 
-class CasinoGame(object):
+class CasinoGame:
     """
     Abstraction class for caisno games
     """
@@ -32,7 +32,7 @@ class CasinoGame(object):
     def Start(self, bets):
         result_guess = []
 
-        # Check the bets are between 0 and 36
+        # Check the bets are between self.guess_range
         for bet in bets:
             if bet < self.guess_range[0] or bet > self.guess_range[1]:
                 raise ValueError(
@@ -61,6 +61,7 @@ class CasinoGame(object):
         return [self.callable_generate_random() for x in range(number)]
 
     def SimulateGame(self, betted_amounts):
+
         can_play = self.AboveMinimum(betted_amounts)
         bets = self.GenerateBets(len(betted_amounts))
         print("Bets are {}".format(bets))
