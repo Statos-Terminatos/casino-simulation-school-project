@@ -99,10 +99,14 @@ class Casino:
                     bet = customer.Bet()
 
                 betted_amounts.append(bet)
+
             print("betted_amounts", betted_amounts)
             print("customers:", customers)
             # Play the game
             result_game = game.SimulateGame(betted_amounts)
+            # Give the won money to the customers
+            for result_customer, customer in zip(result_game[1], customers):
+                customer.CashMoney(result_customer)
             # Pay the croupier
             game.croupier.GatherProfit(result_game[0])
             results.append(result_game)

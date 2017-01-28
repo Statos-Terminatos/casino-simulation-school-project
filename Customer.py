@@ -19,6 +19,11 @@ class Customer:
         self.money = self.money - tip
         return tip
 
+    def CashMoney(self, gains):
+        if gains:
+            print("Customer: I won {}".format(gains))
+        self.money += gains
+
     def __str__(self):
         # For printing the customer with str() or print
         return self.__class__.__name__
@@ -68,5 +73,5 @@ class BachelorCustomer(Customer):
         return bet
 
     def GetFreeMoney(self, amount):
-        print("I got free money {} !".format(amount))
+        print("Bachelor: I got offer {} !".format(amount))
         self.money = self.money + amount

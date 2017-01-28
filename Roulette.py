@@ -2,7 +2,6 @@ import random
 from CasinoGame import CasinoGame
 
 
-
 class Roulette(CasinoGame):
 
     def __init__(self, croupier):
