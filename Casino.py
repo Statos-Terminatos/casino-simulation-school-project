@@ -114,7 +114,7 @@ class Casino:
             print("--------------------")
         return results
 
-    def GetDrinks(self, number=5):
+    def GetDrinks(self, number=1):
         for _ in range(number):
             # allCustomers = [inner for outer in x for inner in outer]
             # random.sample(a, 2)
@@ -168,3 +168,6 @@ class Casino:
         balance = casino_gains + drinks_profit - (wages + offred_money)
         print("Casino balance: ", balance)
         self.casino_cash += balance
+
+        barmen_salery = [b.GetWage() + sum(b.tips) for b in self.barmen]
+        return barmen_salery, croupiers_salary
