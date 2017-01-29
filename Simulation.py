@@ -39,20 +39,27 @@ from matplotlib import pyplot
  #f = open(os.devnull, 'w')
 #sys.stdout = f
 
-casino = Casino(10, 10, 4, 200, 50000, 100, 0.2, 0.1, 60)
+#casino = Casino(10, 10, 4, 200, 50000, 100, 0.5, 0.1, 100)
+#casino = Casino(20, 0, 4, 200, 50000, 100, 0.5, 0.1, 100)
+casino = Casino(0, 20, 4, 200, 50000, 100, 0.5, 0.1, 100)
+
 
 money = []
+salaries = []
 for _ in range(100):
-	casino.SimulateEvening()
-	money.append(casino.casino_cash)
+ salaries.append(casino.SimulateEvening())
+ money.append(casino.casino_cash)
 
-print(money[0])
+print("barmen earned", salaries[0][0])
+print("croupiers earned", salaries[0][1])
 
 #f.close()
 #sys.stdout = sys.__stdout__
 
 pyplot.bar(range(100), money, 0.01)
 pyplot.show()
+
+
 
 
 
