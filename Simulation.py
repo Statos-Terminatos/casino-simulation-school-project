@@ -42,16 +42,16 @@ from matplotlib import pyplot
 casino = Casino(10, 10, 4, 200, 50000, 100, 0.2, 0.1, 60)
 
 money = []
-for _ in range(10):
+for _ in range(100):
 	casino.SimulateEvening()
 	money.append(casino.casino_cash)
 
-print(sum(money))
+print(money[0])
 
 #f.close()
 #sys.stdout = sys.__stdout__
 
-pyplot.bar(range(10), money, 0.01)
+pyplot.bar(range(100), money, 0.01)
 pyplot.show()
 
 

@@ -11,7 +11,7 @@ class Croupier(Employee):
 
     def GatherProfit(self, gains):
         mymoney = self.variable_percentage * gains
-        print("I finished a game and I won {}".format(mymoney))
+        print("Croupier: I finished a game and I earned {}".format(mymoney))
         self.variable_wage.append(mymoney)
         return mymoney
 
@@ -25,7 +25,7 @@ class Barman(Employee):
         self.tips = []
 
     def GatherTip(self, tip):
-        print("I just got a tip {}".format(tip))
+        print("Barmen: You bought a drink, I just got a tip {}".format(tip))
         self.tips.append(tip)
 
     def GetWage(self):
