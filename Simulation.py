@@ -10,28 +10,27 @@ from Customer import OneTimeCustomer, BachelorCustomer, RegularCustomer
 
 from matplotlib import pyplot
 
-# This is used to fixe the pseudo random generator so we can test the output
 
+# Verifying that the expected return from craps is 90%
+res = []
+total1 = 0
+total2 = 0
+for i in range(10000):
+    craps = Craps.Craps(0.9, 1)
+    table = Roulette.Roulette(1)
+    amounts1 = [random.randrange(50, 200) for x in range(10)]
+    amounts2 = [random.randrange(40, 300) for x in range(10)]
+    res1 = craps.SimulateGame(amounts1)
+    res2 = table.SimulateGame(amounts2)
+    print("--------------------------\n")
+    total1 = total1 + sum(res1[1])/sum(amounts1)
+    total2 = total2 + sum(res2[1])/sum(amounts2)
+    print( "total: {}%".format(total1) )
+    print( "total: {}%".format(total2) )
+    print("--------------------------\n")
 
-# res = []
-# total1 = 0
-# total2 = 0
-# for i in range(10000):
-#     craps = Craps.Craps(0.9, 1)
-#     table = Roulette.Roulette(1)
-#     amounts1 = [random.randrange(50, 200) for x in range(10)]
-#     amounts2 = [random.randrange(40, 300) for x in range(10)]
-#     res1 = craps.SimulateGame(amounts1)
-#     res2 = table.SimulateGame(amounts2)
-#     print("--------------------------\n")
-#     total1 = total1 + sum(res1[1])/sum(amounts1)
-#     total2 = total2 + sum(res2[1])/sum(amounts2)
-#     print( "total: {}%".format(total1) )
-#     print( "total: {}%".format(total2) )
-#     print("--------------------------\n")
-
-# print(total1/10000*100)
-# print(total2/10000*100)
+print(total1/10000*100)
+print(total2/10000*100)
 
 
 # Disable print to the stdout
@@ -39,9 +38,9 @@ from matplotlib import pyplot
  #f = open(os.devnull, 'w')
 #sys.stdout = f
 
-#casino = Casino(10, 10, 4, 200, 50000, 100, 0.5, 0.1, 100)
+casino = Casino(10, 10, 4, 200, 50000, 100, 0.5, 0.1, 100)
 #casino = Casino(20, 0, 4, 200, 50000, 100, 0.5, 0.1, 100)
-casino = Casino(0, 20, 4, 200, 50000, 100, 0.5, 0.1, 100)
+#casino = Casino(0, 20, 4, 200, 50000, 100, 0.5, 0.1, 100)
 
 
 money = []
@@ -58,8 +57,5 @@ print("croupiers earned", salaries[0][1])
 
 pyplot.bar(range(100), money, 0.01)
 pyplot.show()
-
-
-
 
 

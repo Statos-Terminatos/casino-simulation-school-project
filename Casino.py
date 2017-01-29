@@ -41,7 +41,7 @@ class Casino:
         for _ in range(self.craps_tables):
             croupier = Croupier(self.wage, 0.005)
             self.croupiers.append(croupier)
-            self.tables.append(Craps(0.5, croupier))
+            self.tables.append(Craps(0.9, croupier))
 
         for _ in range(self.barmen_number):
             self.barmen.append(Barman(self.wage))
